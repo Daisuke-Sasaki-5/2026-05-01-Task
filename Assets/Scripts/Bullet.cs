@@ -31,14 +31,9 @@ public class Bullet : MonoBehaviour
         // EnemyTag‚É‚Ô‚Â‚©‚Á‚½‚çEnemy‚ğÁ‚·
         if(other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
-
-            LoadScene();
+            other.GetComponent<Enemy>()?.Hit();
+            GameManager.instance.AddScore(10);
+            Destroy(gameObject);
         }
-    }
-
-    public void LoadScene()
-    {
-        SceneManager.LoadScene("EndScene");
     }
 }
