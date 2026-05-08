@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        // 時間経過でDestroy
+        // 時間経過で削除
        Destroy(gameObject,lifeTime);
     }
 
@@ -32,7 +32,11 @@ public class Bullet : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             other.GetComponent<Enemy>()?.Hit();
+
+            // スコアにプラスする
             GameManager.instance.AddScore(10);
+
+            // 敵に当たったら弾を削除
             Destroy(gameObject);
         }
     }

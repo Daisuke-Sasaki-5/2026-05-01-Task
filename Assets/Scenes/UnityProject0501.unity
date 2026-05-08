@@ -412,7 +412,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &583042396
 MeshCollider:
@@ -501,9 +501,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583042395}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.8999996}
+  m_LocalScale: {x: 3, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 700610559}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,11 +617,10 @@ Transform:
   m_GameObject: {fileID: 700610549}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.58, z: 0.466}
+  m_LocalPosition: {x: 0.5, y: 0.59, z: -12.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 961739753}
   - {fileID: 1998589628}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -748,6 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   moveSpeed: 3
+  health: 100
   bulletPrefab: {fileID: 6066684407447791521, guid: d51156c4443544c41ba45eb7830bdba8, type: 3}
   ShootPointer: {fileID: 1813619770}
   plane: {fileID: 583042399}
@@ -956,13 +956,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05, y: 0.87, z: -1.13}
+  m_LocalRotation: {x: 0.20827228, y: -0, z: -0, w: 0.97807086}
+  m_LocalPosition: {x: 0.15, y: 11.1, z: -22.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 700610553}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 24.042, y: 0, z: 0}
 --- !u!1 &1453872397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,11 +1113,11 @@ GameObject:
   - component: {fileID: 1573723869}
   - component: {fileID: 1573723868}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: EnemySpawnPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &1573723868
 MeshCollider:
@@ -1206,9 +1206,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573723867}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalScale: {x: 3, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2005,11 +2005,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 203844589}
   - {fileID: 198050585}
-  - {fileID: 583042399}
+  - {fileID: 961739753}
   - {fileID: 700610553}
-  - {fileID: 1573723871}
   - {fileID: 917656954}
   - {fileID: 1721476066}
   - {fileID: 1624167274}
   - {fileID: 2106690015}
   - {fileID: 438390631}
+  - {fileID: 583042399}
+  - {fileID: 1573723871}

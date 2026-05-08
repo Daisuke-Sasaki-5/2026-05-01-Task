@@ -4,7 +4,12 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     //変数宣言
+    [Header("移動速度")]
     [SerializeField] private float moveSpeed = 3.0f;
+
+    [Header("HP")]
+    [SerializeField] private int health = 0;
+
     private CharacterController characterController;
     private Vector3 moveVelocity;
     private InputAction move;
@@ -71,5 +76,31 @@ public class Player : MonoBehaviour
     {
         var bullet = Instantiate(bulletPrefab,ShootPointer.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().Init(ShootPointer.forward);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        // Enemyに触れたときダメージを受ける
+        if(other.CompareTag("Enemy"))
+        {
+            TakeDamage(10);
+
+            Destroy(other.gameObject);
+        }
+    }
+
+    /// <summary>
+    /// ダメージ処理
+    /// </summary>
+    /// <exception cref="NotImplementedException"></exception>
+    private void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        // HPが0になったときGameOverを呼ぶ
+        if(health <= 0)
+        {
+            GameManager.instance.GameOver();
+        }
     }
 }

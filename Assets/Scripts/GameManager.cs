@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
         InitGame();
     }
 
+    /// <summary>
+    /// 初期化
+    /// </summary>
     private void InitGame()
     {
         // 現在のシーンをチェック
@@ -77,6 +80,8 @@ public class GameManager : MonoBehaviour
     }
 
     // ==== READY/GO 演出 ====
+    // 順番に出現させる
+    // Ready→Go→Score、Timer
     private IEnumerator StartGameRoutine()
     {
         // 時間停止
@@ -89,7 +94,8 @@ public class GameManager : MonoBehaviour
                 yield return null;
             }
         }
-    
+        
+        // ReadyText出現
         if(readytext != null)
         {
             readytext.gameObject.SetActive(true);
@@ -97,6 +103,7 @@ public class GameManager : MonoBehaviour
             readytext.gameObject.SetActive(false);
         }
 
+        // GoText出現
         if (gotext != null)
         {
             gotext.gameObject.SetActive(true);
@@ -104,6 +111,7 @@ public class GameManager : MonoBehaviour
             gotext.gameObject.SetActive(false);
         }
 
+        // ScoreTextとTimeText出現
         if (scoreText != null) scoreText.gameObject.SetActive(true);
         if (timetext != null) timetext.gameObject.SetActive(true);
 
@@ -144,7 +152,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GameOver()
+    public void GameOver()
     {
         isGameOver = true;
         Debug.Log("ゲームオーバー");
