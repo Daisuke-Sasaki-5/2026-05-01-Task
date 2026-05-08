@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI readytext;
     [SerializeField] private TextMeshProUGUI gotext;
 
+    [Header("PlayerHP")]
+    [SerializeField] private TextMeshProUGUI hptext;
+
+    [Header("Player")]
+    [SerializeField] private Player player;
+
     private Coroutine startRoutine;
     private void Awake()
     {
@@ -54,12 +60,14 @@ public class GameManager : MonoBehaviour
 
         UpdateScoreUI();
         UpdateTimeUI();
+        UpdateHPUI();
 
         // UI初期化
         if (scoreText != null) scoreText.gameObject.SetActive(false);
         if (timetext != null) timetext.gameObject.SetActive(false);
         if (readytext != null) readytext.gameObject.SetActive(false);
         if (gotext != null) gotext.gameObject.SetActive(false);
+        if (hptext != null) hptext.gameObject.SetActive(false);
 
         // 既存コルーチンがあれば停止
         if(startRoutine != null)StopCoroutine(startRoutine);
@@ -114,6 +122,7 @@ public class GameManager : MonoBehaviour
         // ScoreTextとTimeText出現
         if (scoreText != null) scoreText.gameObject.SetActive(true);
         if (timetext != null) timetext.gameObject.SetActive(true);
+        if (hptext != null) hptext.gameObject.SetActive(true);
 
         // ゲーム開始
         Time.timeScale = 1f;
@@ -141,6 +150,15 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI() ;
 
         if (ScoreManager.instance != null) ScoreManager.instance.ResetScore();
+    }
+
+    // PlayerHP UI更新
+    public void UpdateHPUI()
+    {
+        if(hptext !=  null && player != null)
+        {
+            hptext.text = "HP:" + player.Health;
+        }
     }
 
     // ==== 時間表示 ====
@@ -181,6 +199,7 @@ public class GameManager : MonoBehaviour
             if (timetext != null) timetext.gameObject.SetActive(false);
             if (readytext != null) readytext.gameObject.SetActive(false);
             if (gotext != null) gotext.gameObject.SetActive(false);
+            if (hptext != null) hptext.gameObject.SetActive(false);
             Time.timeScale = 1;
         }
     }

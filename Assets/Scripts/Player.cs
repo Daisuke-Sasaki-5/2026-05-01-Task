@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [Header("HP")]
     [SerializeField] private int health = 0;
 
+    //外部参照用HP
+    public int Health => health;
+
     private CharacterController characterController;
     private Vector3 moveVelocity;
     private InputAction move;
@@ -32,6 +35,12 @@ public class Player : MonoBehaviour
         move = input.currentActionMap.FindAction("Move");
         shoot = input.currentActionMap.FindAction("Shoot");
     }
+
+    private void Start()
+    {
+        GameManager.instance.UpdateHPUI();
+    }
+
     void Update()
     {
         var moveValue = move.ReadValue<Vector2>();
@@ -96,6 +105,9 @@ public class Player : MonoBehaviour
     private void TakeDamage(int damage)
     {
         health -= damage;
+
+        // HPUI更新
+        GameManager.instance.UpdateHPUI();
 
         // HPが0になったときGameOverを呼ぶ
         if(health <= 0)
